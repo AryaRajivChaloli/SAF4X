@@ -581,4 +581,4 @@ for hsm in srevList:
 #print(text_final)
 sent_dict = sentiment_scores(text_final)
 # print(sent_dict)
-print(sent_dict["status"], round(sent_dict["neg"]*100,2), round(sent_dict["neu"]*100,2), round(sent_dict["pos"]*100,2), round(sent_dict["compound"]*100,2))
+print(sent_dict["status"], round(sent_dict["compound"],3))

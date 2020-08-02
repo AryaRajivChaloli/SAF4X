@@ -37,6 +37,7 @@
                 //document.getElementById("output").innerHTML = '<br><br><br><br><br><br><br><h2 style="color: white;">Loading ...</h2>'
                 this.sentence = document.getElementById("sentence").value;
                 document.getElementById("textop").innerHTML = "LOADING ... ";
+                document.getElementById("polarity").innerHTML = "";
                 
                 this.xhr = new XMLHttpRequest();
                 this.xhr.onreadystatechange = this.showImage;
@@ -50,18 +51,12 @@
                     var data = obj.xhr.response;
                     // alert(data);
                     var sentiment = obj.xhr.getResponseHeader("sentiment");
-                    var negscore = obj.xhr.getResponseHeader("negscore");
-                    var neuscore = obj.xhr.getResponseHeader("neuscore");
-                    var posscore = obj.xhr.getResponseHeader("posscore");
-                    var compound = obj.xhr.getResponseHeader("compound");
+                    var polarity = obj.xhr.getResponseHeader("polarity");
 
                     imageEle = document.getElementById("output_img")
                     imageEle.src = URL.createObjectURL(data);
-                    document.getElementById("textop").innerHTML = "Result\t: "+sentiment+"";
-                    document.getElementById("negscore").innerHTML = "Negativity\t: "+negscore+"%";
-                    document.getElementById("neuscore").innerHTML = "Neutrality\t: "+neuscore+"%";
-                    document.getElementById("posscore").innerHTML = "Positivity\t: "+posscore+"%";
-                    document.getElementById("compound").innerHTML = "Compound Score\t: "+compound+"%";
+                    document.getElementById("textop").innerHTML = "Result: "+sentiment+"";
+                    document.getElementById("polarity").innerHTML = "Polarity: "+polarity+"";
                 }
             }
         }
@@ -92,7 +87,7 @@
                     <div class="as-pic">
                         <br><br>
                         <br><br>
-                        <img src="img/hero/1.jpg" id = "output_img" style="padding: 50px;">
+                        <img src="img/hero/1.jpg" id = "output_img" style="padding: 40px;">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -105,20 +100,18 @@
                         </div>
                         <div class="footer-widget">
                             <p>Enter the sentence below, the sentiment of which is to be found.</p>
-                            <form action="#" class="news-form">
+                            <form action="#" class="news-form" onkeypress="return event.keyCode != 13;">
+                                <br><br>
                                 <input type="text" name="name" class="question" id="sentence" required autocomplete="off" placeholder="Enter the Sentence">
                                 <br>
                                 <input type="button" style="background: #e32879; color: #ffffff;" onclick="obj.getImage()" value="CHECK SENTIMENT"><br>
                             </form>
                         </div>
                         <div class="section-title">
-                            <span id="textop" style="font-size:20px;">EMOTION</span>
+                            <span id="textop" style="font-size:20px;"></span>
                         </div>
                         <div class="section-title">
-                            <span id="posscore"></span><br>
-                            <span id="neuscore"></span><br>
-                            <span id="negscore"></span><br>
-                            <span id="compound"></span><br>
+                            <span id="polarity" style="font-size:20px;"></span>
                         </div>
                     </div>
                 </div>

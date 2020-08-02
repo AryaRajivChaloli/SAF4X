@@ -5,10 +5,7 @@
     $command = escapeshellcmd('python exec.py "'.$sentence.'"');
     $output = explode(" ", shell_exec($command));
     $sentiment = $output[0];
-    $negscore = $output[1];
-    $neuscore = $output[2];
-    $posscore = $output[3];
-    $compound = $output[4];
+    $polarity = $output[1];
 
     switch ($sentiment) {
         case 1 :
@@ -36,10 +33,7 @@
     }
 
     header("sentiment:$sent");
-    header("negscore:$negscore");
-    header("neuscore:$neuscore");
-    header("posscore:$posscore");
-    header("compound:$compound");
+    header("polarity:$polarity");
     echo $data;
 
 ?>
