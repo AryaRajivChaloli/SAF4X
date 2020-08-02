@@ -2,7 +2,7 @@
 
     extract($_GET);
 
-    $command = escapeshellcmd('python solution.py "'.$sentence.'"');
+    $command = escapeshellcmd('python exec.py "'.$sentence.'"');
     $output = explode(" ", shell_exec($command));
     $sentiment = $output[0];
     $negscore = $output[1];
