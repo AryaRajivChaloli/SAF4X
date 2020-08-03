@@ -42,7 +42,7 @@
                 this.xhr = new XMLHttpRequest();
                 this.xhr.onreadystatechange = this.showImage;
                 this.xhr.responseType = "blob";
-                this.xhr.open("GET", "http://localhost/SIH/SIH_FINAL/Ver4.X/server.php?sentence="+this.sentence, true);
+                this.xhr.open("GET", "http://100.25.10.4/SAF4X/server.php?sentence="+this.sentence, true);
                 this.xhr.send();
             },
             showImage : function() {
